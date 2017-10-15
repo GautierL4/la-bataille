@@ -4,5 +4,5 @@ import java.util.*;
 
 public interface LecturePseudo
 {
-  public ArrayList<String> readName();
+  public ArrayList<String> readName(int choice);
 }

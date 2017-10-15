@@ -29,31 +29,13 @@ public class Bataille
         return choice;
     }
     
-    public static ArrayList<Joueur> createPlayers(){
-        Scanner console = new Scanner(System.in);
-        System.out.println("Veuillez rentrer le nom du joueur 1");
-        String nomJoueur1 = console.nextLine();
-        System.out.println("Veuillez rentrer le nom du joueur 2");
-        String nomJoueur2 = console.nextLine();
-        System.out.println("Installation des joueurs à la table");
-        Joueur j1 = new Joueur(nomJoueur1);
-        Joueur j2 = new Joueur(nomJoueur2);
-        ArrayList<Joueur>Players = new ArrayList();
-        Players.add(j1);
-        Players.add(j2);
-        return Players;
-    }
-    
-    public static ArrayList<Joueur> createPlayer(){
-        Scanner console = new Scanner(System.in);
-        System.out.println("Veuillez rentrer votre nom");
-        String nomJoueur1 = console.nextLine();
-        System.out.println("Installation du joueur à la table");
-        Joueur j1 = new Joueur(nomJoueur1);
-        Joueur j2 = new Joueur("Ordinateur");
-        ArrayList<Joueur>Players = new ArrayList();
-        Players.add(j1);
-        Players.add(j2);
+    public static ArrayList<Joueur> chooseName(int choice){
+        ArrayList<Joueur> Players = new ArrayList<Joueur>();
+        LecturePseudo nameReader = new MenuPseudo().chooseReaderType(choice);
+        ArrayList<String> nameList = nameReader.readName(choice);
+        Joueur j1 = new Joueur(nameList.get(0));
+        Joueur j2 = new Joueur(nameList.get(1));
+        Players.add(j1);Players.add(j2);
         return Players;
     }
 
@@ -148,8 +130,8 @@ public class Bataille
         j1.defineWinner(j2);
     }
     
-    public static void interactiveBattle(){
-        ArrayList<Joueur> Players=createPlayers();
+    public static void interactiveBattle(int choice){
+        ArrayList<Joueur> Players=chooseName(choice);
         Joueur j1=Players.get(0);
         Joueur j2=Players.get(1);
         ArrayList<Carte> Paquet=openDeck();
@@ -160,8 +142,8 @@ public class Bataille
         interactiveGame(j1,j2);
     }
     
-    public static void computerBattle(){
-        ArrayList<Joueur> Players=createPlayer();
+    public static void computerBattle(int choice){
+        ArrayList<Joueur> Players=chooseName(choice);
         Joueur j1=Players.get(0);
         Joueur j2=Players.get(1);
         ArrayList<Carte> Paquet=openDeck();
@@ -176,10 +158,10 @@ public class Bataille
         int choice = initialize();
         Scanner console = new Scanner(System.in);
         if(choice == 1){
-            interactiveBattle();
+            interactiveBattle(choice);
         }
         else if(choice == 2){
-            computerBattle();
+            computerBattle(choice);
         }
         else{
             System.out.println("Vous n'avez pas saisie un choix valide, Appuyez sur entrée pour lancer une nouvelle partie");
