@@ -40,29 +40,27 @@ public class JoueurTest extends TestCase {
 
     /**
      * Test of roundWon method, of class Joueur.
-     * @param c1
-     * @param c2
      */
-    public void testRoundWon(Carte c1,Carte c2) {
+    public void testRoundWon() {
         int score = j1.getScoreCounter();
         score++;
         j1.setScoreCounter(score);
         j1.Mains.add(c1);
         j1.Mains.add(c2);
         j2.roundWon(c1, c2);
-        assertEquals(j2,j1);
+        ArrayList<Carte> lastCardWonj1 = new ArrayList();
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-2));
+        lastCardWonj1.add(j1.getLastCarte());
+        ArrayList<Carte> lastCardWonj2 = new ArrayList();
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-2));
+        lastCardWonj2.add(j2.getLastCarte());
+        assertEquals(lastCardWonj1,lastCardWonj2);
     }
 
     /**
      * Test of roundWonBattle method, of class Joueur.
-     * @param c1
-     * @param c2
-     * @param c3
-     * @param c4
-     * @param c5
-     * @param c6
      */
-    public void testRoundWonBattle(Carte c1,Carte c2,Carte c3,Carte c4,Carte c5,Carte c6) {
+    public void testRoundWonBattle() {
         int score = j1.getScoreCounter();
         score = score + 3;
         j1.setScoreCounter(score);
@@ -73,14 +71,27 @@ public class JoueurTest extends TestCase {
         j1.Mains.add(c5);
         j1.Mains.add(c6);
         j2.roundWonBattle(c1, c2, c3, c4, c5, c6);
-        assertEquals(j2,j1);
+        ArrayList<Carte> lastCardWonj1 = new ArrayList();
+        lastCardWonj1.add(j1.getLastCarte());
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-2));
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-3));
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-4));
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-5));
+        lastCardWonj1.add(j1.getCarte(j1.Mains.size()-6));
+        ArrayList<Carte> lastCardWonj2 = new ArrayList();
+        lastCardWonj2.add(j2.getLastCarte());
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-2));
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-3));
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-4));
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-5));
+        lastCardWonj2.add(j2.getCarte(j2.Mains.size()-6));
+        assertEquals(lastCardWonj1,lastCardWonj2);
     }
 
     /**
      * Test of addCarte method, of class Joueur.
-     * @param c1
      */
-    public void testAddCarte(Carte c1) {
+    public void testAddCarte() {
         j1.Mains.add(c1);
         j2.addCarte(c1);
         assertTrue("Deux même carte ajoutés",j1.getLastCarte()==j2.getLastCarte());

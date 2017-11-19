@@ -31,6 +31,11 @@ public class Joueur {
         Carte lastCard = this.Mains.get(index-1);
         return lastCard;
     }
+    
+    public Carte getCarte(int index){
+        Carte card = this.Mains.get(index);
+        return card;
+    }
 
     public int getScoreCounter(){
         return cpt_point;
