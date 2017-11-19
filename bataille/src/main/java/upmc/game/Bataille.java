@@ -14,19 +14,48 @@
 
 package upmc.game;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class Bataille
 {
 
-  public static int initialize(){
+    public static int initialize(){
         System.out.println("C'est le jeu de la bataille!\n");
         System.out.flush();
         Scanner console = new Scanner(System.in);
         System.out.println("Souhaitez vous lancer le mode interactif contre un autre joueur ou jouer contre l'ordinateur ?(1/Oui,2/Non)");
         int choice = console.nextInt();
         return choice;
+    }
+    
+    public static ArrayList<Joueur> createPlayers(){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Veuillez rentrer le nom du joueur 1");
+        String nomJoueur1 = console.nextLine();
+        System.out.println("Veuillez rentrer le nom du joueur 2");
+        String nomJoueur2 = console.nextLine();
+        System.out.println("Installation des joueurs à la table");
+        Joueur j1 = new Joueur(nomJoueur1);
+        Joueur j2 = new Joueur(nomJoueur2);
+        ArrayList<Joueur>Players = new ArrayList();
+        Players.add(j1);
+        Players.add(j2);
+        return Players;
+    }
+    
+    public static ArrayList<Joueur> createPlayer(){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Veuillez rentrer votre nom");
+        String nomJoueur1 = console.nextLine();
+        System.out.println("Installation du joueur à la table");
+        Joueur j1 = new Joueur(nomJoueur1);
+        Joueur j2 = new Joueur("Ordinateur");
+        ArrayList<Joueur>Players = new ArrayList();
+        Players.add(j1);
+        Players.add(j2);
+        return Players;
     }
     
     public static ArrayList<Joueur> chooseName(int choice){
@@ -38,7 +67,7 @@ public class Bataille
         Players.add(j1);Players.add(j2);
         return Players;
     }
-
+    
     public static ArrayList<Carte> openDeck(){
         System.out.println("Ouverture du paquet de carte");
         ArrayList<Carte> Paquet= new ArrayList();
@@ -170,7 +199,10 @@ public class Bataille
         }
     }
 
-    public static void main(String[] args){
+    
+  public static void main(String[] args){
         demarrage();
     }
 }
+
+    

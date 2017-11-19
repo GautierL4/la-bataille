@@ -49,6 +49,14 @@ On peut utiliser `lirePseudo` sur `LecturePseudo` de manière générique.
 
 La date de rendu est sur le [site du cours](http://hyc.io/teaching/java.html).
 
+TP 3
+====
+
+* Ajouter des tests JUnits pour les méthodes qui calculent ou vérifient des résultats.
+* Vous devrez probablement refactorer votre code, n'hésitez pas à découper en plusieurs méthodes et à créer d'autres classes.
+* NOTE: on ne peut pas tester les méthodes privées mais si vous avez besoin d'en tester une, il se peut que cette méthode devrait être dans une autre classe.
+* BONUS: Utiliser des *mock objects* pour tester les entrées utilisateurs (voir chapitre 10 de ''Pragmatic unit testing in Java 8 with JUnit'').
+
 Info
 ====
 

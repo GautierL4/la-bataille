@@ -20,7 +20,7 @@ public class Carte {
         this.valeur = valeur;
     }
 
-    public String getColor(){
+    public String getCoulor(){
         return couleur;
     }
 
@@ -28,7 +28,7 @@ public class Carte {
         return valeur;
     }
 
-    public void setColor(String couleur){
+    public void setCoulor(String couleur){
         this.couleur = couleur;
     }
 
